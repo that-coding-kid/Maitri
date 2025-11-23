@@ -12,8 +12,6 @@ externalPort = 80
 
 [[ports]]
 localPort = 5432
-externalPort = 80
-exposeLocalhost = true
 
 [[ports]]
 localPort = 45853

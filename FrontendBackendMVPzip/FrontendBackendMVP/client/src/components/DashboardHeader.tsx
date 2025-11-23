@@ -1,4 +1,4 @@
-import { Bell, User } from "lucide-react";
+import { Bell, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useAuth } from "@/contexts/AuthContext";
+import { useLocation } from "wouter";
 
 interface DashboardHeaderProps {
   alertCount: number;
@@ -17,15 +19,26 @@ interface DashboardHeaderProps {
 }
 
 export default function DashboardHeader({ alertCount, onNotificationClick }: DashboardHeaderProps) {
+  const { username, logout } = useAuth();
+  const [, navigate] = useLocation();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
+  const initials = username
+    ? username.slice(0, 2).toUpperCase()
+    : 'AS';
+
   return (
     <header className="h-16 border-b bg-background px-6 flex items-center justify-between sticky top-0 z-40" data-testid="header-dashboard">
-      <div className="flex items-center gap-2">
-        <div className="bg-primary/10 p-2 rounded-lg">
-          <svg className="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
+      <div className="flex items-center gap-3">
+        <img 
+          src="/maitri-logo.png" 
+          alt="Maitri Logo" 
+          className="h-10 w-10 object-contain"
+        />
         <h1 className="text-xl font-medium" data-testid="text-app-title">Maitri Dashboard</h1>
       </div>
 
@@ -53,19 +66,31 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" data-testid="button-user-menu">
               <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  <User className="h-4 w-4" />
+                <AvatarFallback className="bg-emerald-600 text-white font-medium">
+                  {initials}
                 </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>ASHA Worker</DropdownMenuLabel>
+            <DropdownMenuLabel>
+              <div className="flex flex-col">
+                <span className="font-medium">{username || 'ASHA Worker'}</span>
+                <span className="text-xs font-normal text-muted-foreground">Community Health Worker</span>
+              </div>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem data-testid="menu-profile">Profile</DropdownMenuItem>
             <DropdownMenuItem data-testid="menu-settings">Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem data-testid="menu-logout">Log out</DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={handleLogout}
+              data-testid="menu-logout"
+              className="text-red-600 focus:text-red-600"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Log out
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
