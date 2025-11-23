@@ -62,6 +62,35 @@ export const translations: Record<Language, Record<string, string>> = {
     'login.password': 'Password',
     'login.signin': 'Sign In',
     'login.tagline': 'Serving rural communities through technology',
+    
+    // IVR System
+    'ivr.title': 'Maitri IVR System',
+    'ivr.ivrNumber': 'IVR Number',
+    'ivr.status': 'Status',
+    'ivr.active': 'Active',
+    'ivr.totalCalls': 'Total Calls',
+    'ivr.activeAlerts': 'Active Alerts',
+    'ivr.howItWorks': 'How It Works',
+    'ivr.step1': 'Patients call the IVR number above',
+    'ivr.step2': 'Maitri analyzes health concerns in Hindi',
+    'ivr.step3': 'Calls are anonymized and logged here',
+    'ivr.step4': 'High severity triggers emergency alerts',
+    'ivr.privacyTitle': 'Privacy Protection',
+    'ivr.privacy1': 'Phone numbers are encrypted',
+    'ivr.privacy2': 'Only emergency calls are de-anonymized',
+    'ivr.privacy3': 'ASHA workers see alerts in real-time',
+    'ivr.breakGlassTitle': 'Break-Glass Protocol',
+    'ivr.breakGlass1': 'Severity ≥ 4 triggers emergency mode',
+    'ivr.breakGlass2': 'System asks for village name',
+    'ivr.breakGlass3': 'Full phone number revealed to ASHA',
+    'ivr.breakGlass4': 'Real-time alert sent to dashboard',
+    
+    // Sidebar
+    'sidebar.pendingAlerts': 'Pending Alerts',
+    'sidebar.activeAlerts': 'active alerts',
+    'sidebar.alert': 'alert',
+    'sidebar.noAlerts': 'No alerts at this time',
+    'sidebar.allClear': 'All clear',
   },
   hi: {
     // Header
@@ -124,6 +153,35 @@ export const translations: Record<Language, Record<string, string>> = {
     'login.password': 'पासवर्ड',
     'login.signin': 'साइन इन करें',
     'login.tagline': 'तकनीकी के माध्यम से ग्रामीण समुदायों की सेवा',
+    
+    // IVR System
+    'ivr.title': 'मैत्री आईवीआर प्रणाली',
+    'ivr.ivrNumber': 'आईवीआर नंबर',
+    'ivr.status': 'स्थिति',
+    'ivr.active': 'सक्रिय',
+    'ivr.totalCalls': 'कुल कॉल',
+    'ivr.activeAlerts': 'सक्रिय अलर्ट',
+    'ivr.howItWorks': 'यह कैसे काम करता है',
+    'ivr.step1': 'रोगी ऊपर दिए गए आईवीआर नंबर पर कॉल करते हैं',
+    'ivr.step2': 'मैत्री हिंदी में स्वास्थ्य संबंधी समस्याओं का विश्लेषण करता है',
+    'ivr.step3': 'कॉल को गुमनाम रखा जाता है और यहां दर्ज किया जाता है',
+    'ivr.step4': 'उच्च गंभीरता आपातकालीन अलर्ट को ट्रिगर करती है',
+    'ivr.privacyTitle': 'गोपनीयता सुरक्षा',
+    'ivr.privacy1': 'फोन नंबर एन्क्रिप्ट किए गए हैं',
+    'ivr.privacy2': 'केवल आपातकालीन कॉल को विकोडित किया जाता है',
+    'ivr.privacy3': 'आशा कार्यकर्ता वास्तविक समय में अलर्ट देखते हैं',
+    'ivr.breakGlassTitle': 'ब्रेक-ग्लास प्रोटोकॉल',
+    'ivr.breakGlass1': 'गंभीरता ≥ 4 आपातकालीन मोड को ट्रिगर करती है',
+    'ivr.breakGlass2': 'सिस्टम गांव के नाम के लिए पूछता है',
+    'ivr.breakGlass3': 'आशा को पूरा फोन नंबर दिया जाता है',
+    'ivr.breakGlass4': 'डैशबोर्ड को वास्तविक समय अलर्ट भेजा जाता है',
+    
+    // Sidebar
+    'sidebar.pendingAlerts': 'लंबित अलर्ट',
+    'sidebar.activeAlerts': 'सक्रिय अलर्ट',
+    'sidebar.alert': 'अलर्ट',
+    'sidebar.noAlerts': 'इस समय कोई अलर्ट नहीं',
+    'sidebar.allClear': 'सब ठीक है',
   }
 };
 

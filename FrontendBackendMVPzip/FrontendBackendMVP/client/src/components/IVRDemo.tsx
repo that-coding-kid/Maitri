@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Shield, Users, AlertTriangle } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface SystemStatus {
   twilioConfigured: boolean;
@@ -13,6 +14,7 @@ interface SystemStatus {
 
 export default function IVRSystemStatus() {
   const [twilioNumber, setTwilioNumber] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   // Check system status
   const { data: stats } = useQuery({
@@ -30,35 +32,35 @@ export default function IVRSystemStatus() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Phone className="h-5 w-5" />
-          Maitri IVR System
+          {t('ivr.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* System Status */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">IVR Number:</span>
+            <span className="text-sm font-medium">{t('ivr.ivrNumber')}:</span>
             <Badge variant="outline" className="font-mono">
               {twilioNumber}
             </Badge>
           </div>
           
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Status:</span>
+            <span className="text-sm font-medium">{t('ivr.status')}:</span>
             <Badge variant="default" className="bg-green-500">
-              Active
+              {t('ivr.active')}
             </Badge>
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Total Calls:</span>
+            <span className="text-sm font-medium">{t('ivr.totalCalls')}:</span>
             <Badge variant="secondary">
               {stats?.callsToday || 0}
             </Badge>
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Active Alerts:</span>
+            <span className="text-sm font-medium">{t('ivr.activeAlerts')}:</span>
             <Badge variant={stats?.activeAlerts > 0 ? "destructive" : "secondary"}>
               {stats?.activeAlerts || 0}
             </Badge>
@@ -69,13 +71,13 @@ export default function IVRSystemStatus() {
         <div className="border-t pt-4">
           <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
             <Users className="h-4 w-4" />
-            How It Works
+            {t('ivr.howItWorks')}
           </h4>
           <div className="text-xs text-muted-foreground space-y-1">
-            <p>• Patients call the IVR number above</p>
-            <p>• Maitri analyzes health concerns in Hindi</p>
-            <p>• Calls are anonymized and logged here</p>
-            <p>• High severity triggers emergency alerts</p>
+            <p>• {t('ivr.step1')}</p>
+            <p>• {t('ivr.step2')}</p>
+            <p>• {t('ivr.step3')}</p>
+            <p>• {t('ivr.step4')}</p>
           </div>
         </div>
 
@@ -83,12 +85,12 @@ export default function IVRSystemStatus() {
         <div className="border-t pt-4">
           <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
             <Shield className="h-4 w-4" />
-            Privacy Protection
+            {t('ivr.privacyTitle')}
           </h4>
           <div className="text-xs text-muted-foreground space-y-1">
-            <p>• Phone numbers are encrypted</p>
-            <p>• Only emergency calls are de-anonymized</p>
-            <p>• ASHA workers see alerts in real-time</p>
+            <p>• {t('ivr.privacy1')}</p>
+            <p>• {t('ivr.privacy2')}</p>
+            <p>• {t('ivr.privacy3')}</p>
           </div>
         </div>
 
@@ -96,13 +98,13 @@ export default function IVRSystemStatus() {
         <div className="border-t pt-4">
           <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
             <AlertTriangle className="h-4 w-4" />
-            Break-Glass Protocol
+            {t('ivr.breakGlassTitle')}
           </h4>
           <div className="text-xs text-muted-foreground space-y-1">
-            <p>• Severity ≥ 4 triggers emergency mode</p>
-            <p>• System asks for village name</p>
-            <p>• Full phone number revealed to ASHA</p>
-            <p>• Real-time alert sent to dashboard</p>
+            <p>• {t('ivr.breakGlass1')}</p>
+            <p>• {t('ivr.breakGlass2')}</p>
+            <p>• {t('ivr.breakGlass3')}</p>
+            <p>• {t('ivr.breakGlass4')}</p>
           </div>
         </div>
       </CardContent>
