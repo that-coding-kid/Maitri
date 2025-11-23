@@ -91,6 +91,13 @@ export const translations: Record<Language, Record<string, string>> = {
     'sidebar.alert': 'alert',
     'sidebar.noAlerts': 'No alerts at this time',
     'sidebar.allClear': 'All clear',
+    
+    // Recent Calls & Status
+    'calls.today': 'Today',
+    'calls.thisWeek': 'This Week',
+    'calls.thisMonth': 'This Month',
+    'calls.resolved': 'Resolved',
+    'calls.pending': 'Pending',
   },
   hi: {
     // Header
@@ -183,13 +190,18 @@ export const translations: Record<Language, Record<string, string>> = {
     'sidebar.noAlerts': 'इस समय कोई अलर्ट नहीं',
     'sidebar.allClear': 'सब ठीक है',
     
-    // Charts
+    // Charts & Status
     'chart.callTrends': 'कॉल ट्रेंड',
     'chart.categoryBreakdown': 'श्रेणी विश्लेषण',
     'chart.infant': 'शिशु',
     'chart.general': 'सामान्य',
     'chart.menstrual': 'मासिक धर्म',
     'chart.maternal': 'मातृत्व',
+    'calls.today': 'आज',
+    'calls.thisWeek': 'इस हफ्ते',
+    'calls.thisMonth': 'इस महीने',
+    'calls.resolved': 'समाधान किया गया',
+    'calls.pending': 'लंबित',
   }
 };
 

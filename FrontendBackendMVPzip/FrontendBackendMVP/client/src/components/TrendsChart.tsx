@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TrendsChartProps {
   data: Array<{ name: string; calls: number }>;
@@ -8,18 +9,20 @@ interface TrendsChartProps {
 }
 
 export default function TrendsChart({ data, onFilterChange }: TrendsChartProps) {
+  const { t } = useLanguage();
+
   return (
     <Card data-testid="card-trends-chart">
       <CardHeader className="flex flex-row items-center justify-between gap-4 space-y-0 pb-2">
-        <CardTitle>Call Trends</CardTitle>
+        <CardTitle>{t('chart.callTrends')}</CardTitle>
         <Select defaultValue="today" onValueChange={onFilterChange}>
           <SelectTrigger className="w-32" data-testid="select-time-filter">
             <SelectValue placeholder="Filter" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="today">Today</SelectItem>
-            <SelectItem value="week">This Week</SelectItem>
-            <SelectItem value="month">This Month</SelectItem>
+            <SelectItem value="today">{t('calls.today')}</SelectItem>
+            <SelectItem value="week">{t('calls.thisWeek')}</SelectItem>
+            <SelectItem value="month">{t('calls.thisMonth')}</SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
