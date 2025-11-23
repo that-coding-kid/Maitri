@@ -1,0 +1,69 @@
+Role: You are a Senior Full-Stack Engineer specializing in AI Voice agents, Twilio, and Python.
+
+Objective: Build the MVP for "Maitri," a life-saving IVR health system for rural India, using FastAPI and React.
+
+Context & Resources:
+
+Base Codebase: I have a similar project here: [PASTE THE GITHUB LINK HERE]. Please analyze this repo first. Adopt its folder structure and boilerplate setup (logging, config loading, database connection style) to keep things consistent, but do not copy its business logic.
+
+Product Design Document (PDD): I will paste the full PDD below. This contains the specific logic, data schema, and API endpoints you must build for this project.
+
+Tech Stack:
+
+Backend: Python (FastAPI)
+
+Database: SQLite (for this MVP, using SQLAlchemy)
+
+Telephony: Twilio (use twilio-python library)
+
+AI: OpenAI (Whisper for STT), Groq or OpenAI (for Llama 3 inference)
+
+Frontend: React (Vite) + Tailwind CSS (for the ASHA Dashboard)
+
+Implementation Steps:
+
+Step 1: Project Setup
+
+Initialize the project using the structure from the provided GitHub link.
+
+Set up pyproject.toml or requirements.txt with fastapi, uvicorn, sqlalchemy, twilio, openai, python-multipart, and requests.
+
+Create a .env.example file listing required keys: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, OPENAI_API_KEY, GROQ_API_KEY.
+
+Step 2: Database Schema
+
+Create models.py based on the Section 4: Data Schema Specifications in the PDD below.
+
+Implement two tables: CallLogs and Alerts.
+
+Ensure caller_hash is the default for phone numbers, and encrypted_phone stores the real number (you can simulate encryption with a simple reversible encoding for this MVP).
+
+Step 3: Backend Logic & IVR (The Core)
+
+Create main.py and ivr_routes.py.
+
+Endpoint 1 (/ivr/incoming): Return TwiML to greet the user and use <Record> to capture audio.
+
+Endpoint 2 (/ivr/process-audio):
+
+This is the "Black Box" logic described in Section 3A of the PDD.
+
+Accept the recording URL from Twilio.
+
+Crucial: Since we might not have live API keys right now, create a services/ai_service.py file. In there, create a function analyze_audio(audio_url) that mocks the AI response for now (returns a random severity between 1-5), BUT write the code structure to easily swap in the real OpenAI Whisper + Llama 3 calls later.
+
+Implement the branching logic: If Severity >= 4, return TwiML asking for the Village Name. If < 4, play the advice.
+
+Step 4: The "Break-Glass" Protocol
+
+Implement Endpoint 3 (/ivr/break-glass-confirm):
+
+Update the DB record with the village name.
+
+"De-anonymize" the call in the database (flip a boolean flag).
+
+Mock a WebSocket event that would be sent to the frontend.
+
+Step 5: The Dashboard API
+
+Create a simple endpoint GET /api/dashboard/stats that returns dummy data or data from the SQLite DB for the frontend to render.
