@@ -17,9 +17,14 @@ export const translations: Record<Language, Record<string, string>> = {
     
     // Charts
     'chart.trends': 'Trends',
+    'chart.callTrends': 'Call Trends',
     'chart.categoryBreakdown': 'Category Breakdown',
     'chart.recentCalls': 'Recent Calls',
     'chart.systemStatus': 'System Status',
+    'chart.infant': 'Infant',
+    'chart.general': 'General',
+    'chart.menstrual': 'Menstrual',
+    'chart.maternal': 'Maternal',
     
     // Table headers
     'table.time': 'Time',
@@ -67,7 +72,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'ivr.title': 'Maitri IVR System',
     'ivr.ivrNumber': 'IVR Number',
     'ivr.status': 'Status',
-    'ivr.active': 'Active',
     'ivr.totalCalls': 'Total Calls',
     'ivr.activeAlerts': 'Active Alerts',
     'ivr.howItWorks': 'How It Works',
@@ -115,9 +119,14 @@ export const translations: Record<Language, Record<string, string>> = {
     
     // Charts
     'chart.trends': 'ट्रेंड',
+    'chart.callTrends': 'कॉल ट्रेंड',
     'chart.categoryBreakdown': 'श्रेणी विश्लेषण',
     'chart.recentCalls': 'हाल की कॉल',
     'chart.systemStatus': 'सिस्टम स्थिति',
+    'chart.infant': 'शिशु',
+    'chart.general': 'सामान्य',
+    'chart.menstrual': 'मासिक धर्म',
+    'chart.maternal': 'मातृत्व',
     
     // Table headers
     'table.time': 'समय',
@@ -165,7 +174,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'ivr.title': 'मैत्री आईवीआर प्रणाली',
     'ivr.ivrNumber': 'आईवीआर नंबर',
     'ivr.status': 'स्थिति',
-    'ivr.active': 'सक्रिय',
     'ivr.totalCalls': 'कुल कॉल',
     'ivr.activeAlerts': 'सक्रिय अलर्ट',
     'ivr.howItWorks': 'यह कैसे काम करता है',
@@ -191,12 +199,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'sidebar.allClear': 'सब ठीक है',
     
     // Charts & Status
-    'chart.callTrends': 'कॉल ट्रेंड',
-    'chart.categoryBreakdown': 'श्रेणी विश्लेषण',
-    'chart.infant': 'शिशु',
-    'chart.general': 'सामान्य',
-    'chart.menstrual': 'मासिक धर्म',
-    'chart.maternal': 'मातृत्व',
     'calls.today': 'आज',
     'calls.thisWeek': 'इस हफ्ते',
     'calls.thisMonth': 'इस महीने',
