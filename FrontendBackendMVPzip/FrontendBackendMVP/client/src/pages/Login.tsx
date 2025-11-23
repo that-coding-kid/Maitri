@@ -36,20 +36,29 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50">
       <Card className="w-full max-w-md shadow-2xl">
-        <CardHeader className="space-y-4 text-center">
-          <div className="flex justify-center mb-4">
+        <CardHeader className="relative space-y-4 text-center pt-8 pb-6">
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-0 opacity-20">
             <img 
               src="/maitri-logo.png" 
-              alt="Maitri Logo" 
-              className="h-40 w-40 object-contain"
+              alt="Maitri Logo Background" 
+              className="h-64 w-64 object-contain"
             />
           </div>
-          <CardTitle className="text-3xl font-bold text-emerald-800">
-            Maitri Dashboard
-          </CardTitle>
-          <CardDescription className="text-base">
-            ASHA Worker Portal - Sign in to access health alerts
-          </CardDescription>
+          <div className="relative z-10">
+            <div className="flex justify-center mb-4">
+              <img 
+                src="/maitri-logo.png" 
+                alt="Maitri Logo" 
+                className="h-32 w-32 object-contain"
+              />
+            </div>
+            <CardTitle className="text-3xl font-bold text-emerald-800">
+              Maitri Dashboard
+            </CardTitle>
+            <CardDescription className="text-base">
+              ASHA Worker Portal - Sign in to access health alerts
+            </CardDescription>
+          </div>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
