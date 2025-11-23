@@ -3,6 +3,24 @@ import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+// Helper function to shorten long URLs and text
+function shortenText(text: string, maxLength: number = 50): string {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  
+  // If it's a URL, shorten it intelligently
+  if (text.startsWith('http')) {
+    try {
+      const url = new URL(text);
+      return `${url.protocol}//${url.hostname}...`;
+    } catch {
+      return text.substring(0, maxLength) + '...';
+    }
+  }
+  
+  return text.substring(0, maxLength) + '...';
+}
+
 interface EmergencyAlert {
   id: string;
   phoneNumber?: string;
@@ -87,7 +105,9 @@ export default function EmergencyAlertModal({
             </div>
             <div>
               <p className="text-sm text-muted-foreground">AI Reasoning</p>
-              <p className="text-sm" data-testid="text-emergency-reason">{alert.emergencyReason || 'No details available'}</p>
+              <p className="text-sm" data-testid="text-emergency-reason" title={alert.emergencyReason || 'No details available'}>
+                {shortenText(alert.emergencyReason || 'No details available')}
+              </p>
             </div>
           </div>
         </div>

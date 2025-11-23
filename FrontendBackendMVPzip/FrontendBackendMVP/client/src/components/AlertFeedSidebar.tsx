@@ -21,7 +21,7 @@ interface AlertFeedSidebarProps {
 
 export default function AlertFeedSidebar({ alerts, onViewAlert }: AlertFeedSidebarProps) {
   return (
-    <div className="w-80 border-l bg-card h-full flex flex-col" data-testid="sidebar-alert-feed">
+    <div className="w-80 border-l bg-card h-full flex flex-col animate-in slide-in-from-right duration-300" data-testid="sidebar-alert-feed">
       <div className="p-6 border-b">
         <h2 className="text-lg font-medium flex items-center gap-2" data-testid="text-sidebar-title">
           <AlertCircle className="h-5 w-5" />
