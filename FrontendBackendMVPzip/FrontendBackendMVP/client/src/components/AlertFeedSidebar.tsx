@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import AlertFeedItem from "./AlertFeedItem";
 import { AlertCircle } from "lucide-react";
@@ -17,11 +18,25 @@ export interface Alert {
 interface AlertFeedSidebarProps {
   alerts: Alert[];
   onViewAlert: (alert: Alert) => void;
+  isOpen: boolean;
 }
 
-export default function AlertFeedSidebar({ alerts, onViewAlert }: AlertFeedSidebarProps) {
+export default function AlertFeedSidebar({ alerts, onViewAlert, isOpen }: AlertFeedSidebarProps) {
+  const [isVisible, setIsVisible] = useState(isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsVisible(true);
+    } else {
+      const timer = setTimeout(() => setIsVisible(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  if (!isVisible) return null;
+
   return (
-    <div className="w-80 border-l bg-card h-full flex flex-col animate-in slide-in-from-right duration-300" data-testid="sidebar-alert-feed">
+    <div className={`w-80 border-l bg-card h-full flex flex-col ${isOpen ? 'animate-in slide-in-from-right' : 'animate-out slide-out-to-right'} duration-300`} data-testid="sidebar-alert-feed">
       <div className="p-6 border-b">
         <h2 className="text-lg font-medium flex items-center gap-2" data-testid="text-sidebar-title">
           <AlertCircle className="h-5 w-5" />

@@ -193,12 +193,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {isAlertSidebarOpen && (
-          <AlertFeedSidebar 
-            alerts={alerts}
-            onViewAlert={handleViewAlert}
-          />
-        )}
+        <AlertFeedSidebar 
+          alerts={alerts}
+          onViewAlert={handleViewAlert}
+          isOpen={isAlertSidebarOpen}
+        />
       </div>
 
       <EmergencyAlertModal

@@ -4,20 +4,21 @@ import { AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 // Helper function to shorten long URLs and text
-function shortenText(text: string, maxLength: number = 50): string {
+function shortenText(text: string, maxLength: number = 30): string {
   if (!text) return '';
-  if (text.length <= maxLength) return text;
   
-  // If it's a URL, shorten it intelligently
+  // If it's a URL, show just the domain
   if (text.startsWith('http')) {
     try {
       const url = new URL(text);
-      return `${url.protocol}//${url.hostname}...`;
+      const hostname = url.hostname.replace('www.', '');
+      return `${hostname}`;
     } catch {
       return text.substring(0, maxLength) + '...';
     }
   }
   
+  if (text.length <= maxLength) return text;
   return text.substring(0, maxLength) + '...';
 }
 
