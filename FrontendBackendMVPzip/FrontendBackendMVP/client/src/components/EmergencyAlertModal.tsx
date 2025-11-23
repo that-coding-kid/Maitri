@@ -83,7 +83,9 @@ export default function EmergencyAlertModal({
   const severity = alert.severityLevel ?? alert.severity ?? 0;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open) onClose();
+    }}>
       <DialogContent className="max-w-2xl" data-testid="modal-emergency-alert">
         <div className="flex items-center gap-4 mb-4">
           <div className="bg-destructive/10 p-4 rounded-lg animate-pulse">
