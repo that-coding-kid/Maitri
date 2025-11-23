@@ -29,8 +29,20 @@ Preferred communication style: Simple, everyday language.
 - Component approach: Pre-built shadcn components provide consistency across the dashboard
 
 **Key Pages**:
-- **Dashboard**: Single-page application displaying real-time call statistics, emergency alert feed, health category breakdowns, and trend charts
+- **Login**: Authentication page with hardcoded credentials (temporary: username: ashasharma, password: asha123) featuring the Maitri logo and emerald-themed UI
+- **Dashboard**: Protected single-page application displaying real-time call statistics, emergency alert feed, health category breakdowns, and trend charts
 - **Alert Management**: Modal-based emergency alert viewing with phone number reveal and resolution tracking
+
+**Authentication & Authorization**:
+- **Client-Side Auth**: React Context-based authentication with localStorage session persistence
+- **Hardcoded Credentials**: Temporary development setup (ashasharma/asha123) - must be replaced with backend authentication before production
+- **Protected Routes**: ProtectedRoute wrapper component redirects unauthenticated users to login page
+- **Session Management**: Login state persists across browser refreshes via localStorage
+- **Auto-Redirect**: Authenticated users are automatically redirected away from login page to dashboard
+
+**Brand Assets**:
+- **Logo**: Maitri logo (maitri-logo.png) displayed in header of all authenticated pages and on login screen
+- **Color Scheme**: Emerald green (#059669) primary color representing health and growth
 
 **Architectural Decisions**:
 - **Problem**: Need for real-time updates without constant polling
