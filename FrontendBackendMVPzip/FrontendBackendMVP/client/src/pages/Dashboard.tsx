@@ -38,6 +38,7 @@ let socket: Socket | null = null;
 export default function Dashboard() {
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
+  const [isAlertSidebarOpen, setIsAlertSidebarOpen] = useState(true);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -142,7 +143,7 @@ export default function Dashboard() {
     <div className="h-screen flex flex-col">
       <DashboardHeader 
         alertCount={alerts.length} 
-        onNotificationClick={() => console.log('Notifications clicked')}
+        onNotificationClick={() => setIsAlertSidebarOpen(!isAlertSidebarOpen)}
       />
       
       <div className="flex-1 flex overflow-hidden">
@@ -192,10 +193,12 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <AlertFeedSidebar 
-          alerts={alerts}
-          onViewAlert={handleViewAlert}
-        />
+        {isAlertSidebarOpen && (
+          <AlertFeedSidebar 
+            alerts={alerts}
+            onViewAlert={handleViewAlert}
+          />
+        )}
       </div>
 
       <EmergencyAlertModal

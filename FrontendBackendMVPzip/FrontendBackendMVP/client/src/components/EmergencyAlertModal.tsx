@@ -54,7 +54,10 @@ export default function EmergencyAlertModal({
           <div className="space-y-4">
             <div>
               <p className="text-sm text-muted-foreground">Phone Number</p>
-              <p className="text-base font-medium font-mono" data-testid="text-phone-number">{alert.phoneNumber || 'N/A'}</p>
+              <a href={`tel:${alert.phoneNumber}`} className="text-base font-medium font-mono text-blue-600 hover:underline" data-testid="text-phone-number">
+                {alert.phoneNumber ? `${alert.phoneNumber.slice(0, 6)}...` : 'N/A'}
+              </a>
+              <p className="text-xs text-muted-foreground mt-1">{alert.phoneNumber || ''}</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Village Name</p>
