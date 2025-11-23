@@ -37,11 +37,11 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="space-y-4 text-center">
-          <div className="flex justify-center mb-2">
+          <div className="flex justify-center mb-4">
             <img 
               src="/maitri-logo.png" 
               alt="Maitri Logo" 
-              className="h-24 w-24 object-contain"
+              className="h-40 w-40 object-contain"
             />
           </div>
           <CardTitle className="text-3xl font-bold text-emerald-800">
