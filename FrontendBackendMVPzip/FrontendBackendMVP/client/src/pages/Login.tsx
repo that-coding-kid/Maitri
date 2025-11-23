@@ -36,7 +36,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50">
       <Card className="w-full max-w-md shadow-2xl">
-        <CardHeader className="space-y-3 text-center pb-4">
+        <CardHeader className="space-y-1 text-center pb-4">
           <div className="flex justify-center">
             <img 
               src="/maitri-logo.png" 
@@ -44,7 +44,7 @@ export default function Login() {
               className="h-56 w-56 object-contain"
             />
           </div>
-          <CardTitle className="text-3xl font-bold text-emerald-800 -mt-8">
+          <CardTitle className="text-3xl font-bold text-emerald-800 -mt-20">
             Maitri Dashboard
           </CardTitle>
           <CardDescription className="text-base">
