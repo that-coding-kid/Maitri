@@ -1,4 +1,5 @@
 import { Bell, LogOut, Globe } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,10 +24,16 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
   const { username, logout } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const [, navigate] = useLocation();
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleLanguageChange = (lang: 'en' | 'hi') => {
+    setLanguage(lang);
+    setLanguageMenuOpen(false);
   };
 
   const initials = username
@@ -45,7 +52,7 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
       </div>
 
       <div className="flex items-center gap-4">
-        <DropdownMenu>
+        <DropdownMenu open={languageMenuOpen} onOpenChange={setLanguageMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" data-testid="button-language">
               <Globe className="h-5 w-5" />
@@ -55,14 +62,14 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
             <DropdownMenuLabel>Language</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem 
-              onClick={() => setLanguage('en')}
+              onClick={() => handleLanguageChange('en')}
               data-testid="menu-language-en"
               className={language === 'en' ? 'bg-accent' : ''}
             >
               English
             </DropdownMenuItem>
             <DropdownMenuItem 
-              onClick={() => setLanguage('hi')}
+              onClick={() => handleLanguageChange('hi')}
               data-testid="menu-language-hi"
               className={language === 'hi' ? 'bg-accent' : ''}
             >
