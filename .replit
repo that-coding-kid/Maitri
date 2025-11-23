@@ -7,13 +7,17 @@ packages = ["unzip", "postgresql"]
 expertMode = true
 
 [[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
 localPort = 5432
 externalPort = 80
 exposeLocalhost = true
 
 [[ports]]
-localPort = 5000
-externalPort = 80
+localPort = 45853
+externalPort = 3000
 
 [userenv]
 
