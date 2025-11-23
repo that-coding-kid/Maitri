@@ -1,4 +1,5 @@
 import { Bell, LogOut, Globe } from "lucide-react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,6 +24,7 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
   const { username, logout } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const [, navigate] = useLocation();
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const handleLogout = () => {
     logout();
@@ -31,6 +33,8 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
 
   const handleLanguageChange = (lang: 'en' | 'hi') => {
     setLanguage(lang);
+    // Close the dropdown by simulating blur
+    triggerRef.current?.blur();
   };
 
   const initials = username
@@ -51,7 +55,12 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
       <div className="flex items-center gap-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" data-testid="button-language">
+            <Button 
+              ref={triggerRef}
+              variant="ghost" 
+              size="icon" 
+              data-testid="button-language"
+            >
               <Globe className="h-5 w-5" />
             </Button>
           </DropdownMenuTrigger>
