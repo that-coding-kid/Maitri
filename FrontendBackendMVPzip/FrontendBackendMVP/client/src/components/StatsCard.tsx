@@ -26,8 +26,7 @@ export default function StatsCard({ title, value, trend, icon: Icon }: StatsCard
           <p className="text-xs text-muted-foreground mt-2" data-testid={`text-trend-${title.toLowerCase().replace(/\s+/g, '-')}`}>
             <span className={trend.isPositive ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
               {trend.isPositive ? "↑" : "↓"} {Math.abs(trend.value)}%
-            </span>{" "}
-            from yesterday
+            </span>
           </p>
         )}
       </CardContent>

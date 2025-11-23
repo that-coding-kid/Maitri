@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CallRecord {
   id: string;
@@ -14,6 +15,8 @@ interface RecentCallsTableProps {
 }
 
 export default function RecentCallsTable({ calls }: RecentCallsTableProps) {
+  const { t } = useLanguage();
+
   const getSeverityVariant = (level: number) => {
     if (level >= 4) return "destructive";
     if (level >= 3) return "default";
@@ -31,17 +34,17 @@ export default function RecentCallsTable({ calls }: RecentCallsTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-32">Time</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Severity</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead className="w-32">{t('table.time')}</TableHead>
+            <TableHead>{t('table.category')}</TableHead>
+            <TableHead>{t('table.severity')}</TableHead>
+            <TableHead>{t('table.status')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {calls.length === 0 ? (
             <TableRow>
               <TableCell colSpan={4} className="text-center text-muted-foreground h-32">
-                No recent calls
+                {t('table.noRecords')}
               </TableCell>
             </TableRow>
           ) : (

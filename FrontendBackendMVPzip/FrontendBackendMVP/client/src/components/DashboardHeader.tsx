@@ -1,4 +1,4 @@
-import { Bell, LogOut } from "lucide-react";
+import { Bell, LogOut, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocation } from "wouter";
 
 interface DashboardHeaderProps {
@@ -20,6 +21,7 @@ interface DashboardHeaderProps {
 
 export default function DashboardHeader({ alertCount, onNotificationClick }: DashboardHeaderProps) {
   const { username, logout } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const [, navigate] = useLocation();
 
   const handleLogout = () => {
@@ -39,10 +41,36 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
           alt="Maitri Logo" 
           className="h-10 w-10 object-contain"
         />
-        <h1 className="text-xl font-medium" data-testid="text-app-title">Maitri Dashboard</h1>
+        <h1 className="text-xl font-medium" data-testid="text-app-title">{t('dashboard.title')}</h1>
       </div>
 
       <div className="flex items-center gap-4">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" data-testid="button-language">
+              <Globe className="h-5 w-5" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Language</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem 
+              onClick={() => setLanguage('en')}
+              data-testid="menu-language-en"
+              className={language === 'en' ? 'bg-accent' : ''}
+            >
+              English
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => setLanguage('hi')}
+              data-testid="menu-language-hi"
+              className={language === 'hi' ? 'bg-accent' : ''}
+            >
+              हिन्दी
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <Button
           variant="ghost"
           size="icon"
@@ -76,12 +104,12 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
             <DropdownMenuLabel>
               <div className="flex flex-col">
                 <span className="font-medium">{username || 'ASHA Worker'}</span>
-                <span className="text-xs font-normal text-muted-foreground">Community Health Worker</span>
+                <span className="text-xs font-normal text-muted-foreground">{t('dashboard.worker')}</span>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem data-testid="menu-profile">Profile</DropdownMenuItem>
-            <DropdownMenuItem data-testid="menu-settings">Settings</DropdownMenuItem>
+            <DropdownMenuItem data-testid="menu-profile">{t('menu.profile')}</DropdownMenuItem>
+            <DropdownMenuItem data-testid="menu-settings">{t('menu.settings')}</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem 
               onClick={handleLogout}
@@ -89,7 +117,7 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
               className="text-red-600 focus:text-red-600"
             >
               <LogOut className="h-4 w-4 mr-2" />
-              Log out
+              {t('menu.logout')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

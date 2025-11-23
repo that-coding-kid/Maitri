@@ -11,6 +11,7 @@ import EmergencyAlertModal from "@/components/EmergencyAlertModal";
 import IVRSystemStatus from "@/components/IVRDemo";
 import { Phone, AlertTriangle, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { apiRequest } from "@/lib/queryClient";
 
 interface DashboardStats {
@@ -40,6 +41,7 @@ export default function Dashboard() {
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   const [isAlertSidebarOpen, setIsAlertSidebarOpen] = useState(true);
   const { toast } = useToast();
+  const { t } = useLanguage();
   const queryClient = useQueryClient();
 
   // Fetch dashboard stats
@@ -72,14 +74,14 @@ export default function Dashboard() {
       queryClient.invalidateQueries({ queryKey: ['/api/dashboard/stats'] });
       queryClient.invalidateQueries({ queryKey: ['/api/calls/recent'] });
       toast({
-        title: "Alert Resolved",
-        description: "The emergency alert has been marked as responded.",
+        title: t('alert.resolved_msg'),
+        description: t('alert.responded_desc'),
       });
     },
     onError: () => {
       toast({
-        title: "Error",
-        description: "Failed to resolve alert. Please try again.",
+        title: t('alert.error'),
+        description: t('alert.error_resolve'),
         variant: "destructive",
       });
     },
@@ -106,7 +108,7 @@ export default function Dashboard() {
       // Show toast notification
       toast({
         title: "Emergency Alert!",
-        description: `New emergency from ${newAlert.villageName || newAlert.village}`,
+        description: `${t('alert.emergency')} - ${newAlert.villageName || newAlert.village}`,
         variant: "destructive",
       });
       
@@ -151,19 +153,19 @@ export default function Dashboard() {
           <div className="max-w-7xl mx-auto p-6 space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <StatsCard
-                title="Calls Today"
+                title={t('stats.callsToday')}
                 value={stats?.callsToday ?? 0}
                 trend={{ value: 12, isPositive: true }}
                 icon={Phone}
               />
               <StatsCard
-                title="Active Alerts"
+                title={t('stats.activeAlerts')}
                 value={alerts.length}
                 trend={{ value: 8, isPositive: false }}
                 icon={AlertTriangle}
               />
               <StatsCard
-                title="Avg Response Time"
+                title={t('stats.avgResponseTime')}
                 value={stats?.avgResponseTime ?? "N/A"}
                 trend={{ value: 15, isPositive: true }}
                 icon={TrendingUp}
@@ -182,11 +184,11 @@ export default function Dashboard() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h2 className="text-xl font-medium">Recent Calls</h2>
+                <h2 className="text-xl font-medium">{t('chart.recentCalls')}</h2>
                 <RecentCallsTable calls={recentCalls} />
               </div>
               <div className="space-y-4">
-                <h2 className="text-xl font-medium">System Status</h2>
+                <h2 className="text-xl font-medium">{t('chart.systemStatus')}</h2>
                 <IVRSystemStatus />
               </div>
             </div>
