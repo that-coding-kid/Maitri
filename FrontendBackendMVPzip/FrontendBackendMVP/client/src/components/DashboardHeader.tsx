@@ -24,7 +24,6 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
   const { username, logout } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const [, navigate] = useLocation();
-  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -33,7 +32,6 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
 
   const handleLanguageChange = (lang: 'en' | 'hi') => {
     setLanguage(lang);
-    setLanguageMenuOpen(false);
   };
 
   const initials = username
@@ -52,13 +50,13 @@ export default function DashboardHeader({ alertCount, onNotificationClick }: Das
       </div>
 
       <div className="flex items-center gap-4">
-        <DropdownMenu open={languageMenuOpen} onOpenChange={setLanguageMenuOpen}>
+        <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" data-testid="button-language">
               <Globe className="h-5 w-5" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" onClick={(e) => e.stopPropagation()}>
             <DropdownMenuLabel>Language</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem 
