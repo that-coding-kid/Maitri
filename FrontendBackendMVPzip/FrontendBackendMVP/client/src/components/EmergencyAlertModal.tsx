@@ -22,6 +22,38 @@ function shortenText(text: string, maxLength: number = 30): string {
   return text.substring(0, maxLength) + '...';
 }
 
+// Helper function to extract and render URLs as hyperlinks
+function renderVillageNameWithLink(text: string) {
+  if (!text) return 'N/A';
+  
+  // Check if text contains a URL
+  const urlMatch = text.match(/(https?:\/\/[^\s]+)/);
+  
+  if (urlMatch) {
+    const url = urlMatch[1];
+    const beforeUrl = text.substring(0, text.indexOf(url));
+    const afterUrl = text.substring(text.indexOf(url) + url.length);
+    
+    return (
+      <>
+        {beforeUrl}
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline break-all"
+          title={url}
+        >
+          {shortenText(url)}
+        </a>
+        {afterUrl}
+      </>
+    );
+  }
+  
+  return text;
+}
+
 interface EmergencyAlert {
   id: string;
   phoneNumber?: string;
@@ -80,7 +112,9 @@ export default function EmergencyAlertModal({
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Village Name</p>
-              <p className="text-base font-medium" data-testid="text-village-name">{alert.villageName || 'N/A'}</p>
+              <p className="text-base font-medium break-words whitespace-normal" data-testid="text-village-name">
+                {renderVillageNameWithLink(alert.villageName || 'N/A')}
+              </p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Time</p>
