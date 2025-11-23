@@ -1,6 +1,17 @@
+modules = ["nodejs-20"]
 [nix]
 channel = "stable-25_05"
-packages = ["unzip"]
+packages = ["unzip", "postgresql"]
 
 [agent]
 expertMode = true
+
+[[ports]]
+localPort = 5432
+externalPort = 80
+exposeLocalhost = true
+
+[userenv]
+
+[userenv.shared]
+DATABASE_URL = "postgresql://runner@localhost/maitri_ivr"
