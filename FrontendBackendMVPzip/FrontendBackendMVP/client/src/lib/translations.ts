@@ -182,6 +182,14 @@ export const translations: Record<Language, Record<string, string>> = {
     'sidebar.alert': 'अलर्ट',
     'sidebar.noAlerts': 'इस समय कोई अलर्ट नहीं',
     'sidebar.allClear': 'सब ठीक है',
+    
+    // Charts
+    'chart.callTrends': 'कॉल ट्रेंड',
+    'chart.categoryBreakdown': 'श्रेणी विश्लेषण',
+    'chart.infant': 'शिशु',
+    'chart.general': 'सामान्य',
+    'chart.menstrual': 'मासिक धर्म',
+    'chart.maternal': 'मातृत्व',
   }
 };
 
