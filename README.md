@@ -140,7 +140,7 @@ Preferred communication style: Simple, everyday language.
 - Purpose: Handles all telephone infrastructure for incoming calls, audio recording, and playback
 
 **OpenAI** (AI/ML):
-- Whisper API: Speech-to-text transcription with Hindi language support
+- Whisper API: Speech-To-Text transcription with Hindi language support
 - GPT-4/GPT-3.5: Health concern analysis and triage
 - Configuration: `OPENAI_API_KEY` environment variable
 - Timeout: Extended to 60 seconds for audio upload operations
