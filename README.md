@@ -37,7 +37,7 @@ Preferred communication style: Simple, everyday language.
 - Component approach: Pre-built shadcn components provide consistency across the dashboard
 
 **Key Pages**:
-- **Login**: Authentication page with hardcoded credentials (temporary: username: ashasharma, password: asha123) featuring the Maitri logo and emerald-themed UI
+- **Login**: Authentication page with credentials featuring the Maitri logo and emerald-themed UI
 - **Dashboard**: Protected single-page application displaying real-time call statistics, emergency alert feed, health category breakdowns, and trend charts
 - **Alert Management**: Modal-based emergency alert viewing with phone number reveal and resolution tracking
 
