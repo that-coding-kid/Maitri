@@ -4,6 +4,14 @@
 
 Maitri is a voice-based Interactive Voice Response (IVR) health monitoring system designed for rural India. The system enables community members to call a toll-free number, describe health concerns in their native language (Hindi), and receive AI-powered health triage and guidance. The application uses voice-to-text transcription, AI-powered severity assessment, and a privacy-first architecture with encrypted phone number storage and "break-glass" emergency protocols for high-severity cases.
 
+## Pipeline Flow
+
+Below is a high-level diagram of the AI and IVR processing pipeline used by Maitri. This illustrates audio capture, transcription, AI triage, and the break-glass emergency flow.
+
+![Pipeline Flow](./pipeline-flow.jpeg)
+
+_Figure: High-level pipeline flow for IVR audio → transcription → AI triage → response/alert._
+
 The system consists of two main components:
 1. **IVR Call System**: Twilio-based telephony that captures caller audio, transcribes it, analyzes health severity, and responds with appropriate guidance
 2. **ASHA Dashboard**: Real-time web dashboard for ASHA (Accredited Social Health Activist) workers to monitor emergency alerts and health trends
